@@ -32,9 +32,9 @@ content: ['./src/**/*.{svelte,js,ts}', './public/index.html'],
 在 routes目录下的+layout.svelte文件中引入该文件
 
 
-Access Key：ALTAKioNowgHFo1gEWYT4QqRZW
+AcKe：ALTAKioNowgHFo1gEWYT4QqRZW
 
-Secret Key：2676be91677d4532be42eeea7328fe66
+SeKe：2676be91677d4532be42eeea7328fe66
 
 
 
