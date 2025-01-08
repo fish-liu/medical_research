@@ -7,9 +7,9 @@ mod qianfan;
 mod cmd;
 mod utils;
 
-pub const ACCESS_KEY: &str = "ALTAKioNowgHFo1gEWYT4QqRZW";
+pub const AC_KE: &str = "ALTAKioNowgHFo1gEWYT4QqRZW";
 
-pub const SECRET_KEY: &str = "2676be91677d4532be42eeea7328fe66";
+pub const SE_KE: &str = "2676be91677d4532be42eeea7328fe66";
 
 
 #[warn(dead_code)]
@@ -26,7 +26,7 @@ pub fn run() {
         .setup(|app|{
 
             app.manage(QianFanHandler{
-                qianfan_client: QianFanClient::new(ACCESS_KEY.to_owned(),SECRET_KEY.to_owned())
+                qianfan_client: QianFanClient::new(AC_KE.to_owned(),SE_KE.to_owned())
             });
 
             Ok(())
