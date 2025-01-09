@@ -98,9 +98,12 @@ pub struct Usage{
 impl QianFanClient {
 
     // 关联函数，创建一个 QianFanClient 
-    pub fn new(access_key: String,secret_key: String) -> QianFanClient{
+    pub fn new(key: String) -> QianFanClient{
+
+        let tem :Vec<&str> = key.split("_").collect();
+
         QianFanClient{
-            auth: IAMAuth::new(access_key, secret_key)
+            auth: IAMAuth::new(tem[0].into(), tem[1].into())
         }
     }
 

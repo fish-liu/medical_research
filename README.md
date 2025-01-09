@@ -32,10 +32,8 @@ content: ['./src/**/*.{svelte,js,ts}', './public/index.html'],
 在 routes目录下的+layout.svelte文件中引入该文件
 
 
-AcKe：ALTAKioNowgHFo1gEWYT4QqRZW
 
-SeKe：2676be91677d4532be42eeea7328fe66
-
+AcKe_SeKe：ALTAKioNowgHFo1gEWYT4QqRZW_2676be91677d4532be42eeea7328fe66
 
 
 rust 读取 ymal配置文件 https://segmentfault.com/a/1190000044952130
@@ -52,4 +50,4 @@ https://juejin.cn/post/7226177081197068346
 --------response-------200 OK
 --------response-------"{\"error_code\":100,\"error_msg\":\"Invalid parameter\"}"
 
-
+git push origin main:main

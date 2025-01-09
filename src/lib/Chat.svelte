@@ -61,12 +61,14 @@
             }
         }
 
+        /*
         loading = true;
         setTimeout(() => {
             loading = false;
         },3000)
+        */
         // 调用 api
-        /*
+        
         loading = true;
         await invoke("chat",{messages:sendMessages}).then((res:any)=>{
             loading = false;
@@ -77,7 +79,7 @@
                 addMessage("assistant",content);
             }
         });
-        */
+        
     }
 
     // 添加聊天信息
