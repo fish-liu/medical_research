@@ -1,1 +1,22 @@
-safdsf
+
+
+AS_VALUE_：search_ALTAKioNowgHFo1gEWYT4QqRZW_2676be91677d4532be42eeea7328fe66
+
+
+rust 读取 ymal配置文件 https://segmentfault.com/a/1190000044952130
+后期可以考虑将配置信息放到配置文件中。
+
+URL编码
+https://blog.csdn.net/bbdxf/article/details/137524206
+
+
+reqwest模块实战
+https://juejin.cn/post/7226177081197068346
+
+
+--------response-------200 OK
+--------response-------"{\"error_code\":100,\"error_msg\":\"Invalid parameter\"}"
+
+git pull origin main
+
+git push origin main:main
