@@ -33,7 +33,7 @@ content: ['./src/**/*.{svelte,js,ts}', './public/index.html'],
 
 
 
-AcKe_SeKe：ALTAKioNowgHFo1gEWYT4QqRZW_2676be91677d4532be42eeea7328fe66
+AS_VALUE_：search_ALTAKioNowgHFo1gEWYT4QqRZW_2676be91677d4532be42eeea7328fe66
 
 
 rust 读取 ymal配置文件 https://segmentfault.com/a/1190000044952130

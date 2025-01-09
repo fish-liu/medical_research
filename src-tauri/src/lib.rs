@@ -8,7 +8,7 @@ mod cmd;
 mod utils;
 
 
-pub const AcKe_SeKe: &str = "ALTAKioNowgHFo1gEWYT4QqRZW_2676be91677d4532be42eeea7328fe66";
+pub const AS_VALUE: &str = "search_ALTAKioNowgHFo1gEWYT4QqRZW_2676be91677d4532be42eeea7328fe66";
 
 
 #[warn(dead_code)]
@@ -25,7 +25,7 @@ pub fn run() {
         .setup(|app|{
 
             app.manage(QianFanHandler{
-                qianfan_client: QianFanClient::new(AcKe_SeKe.to_owned())
+                qianfan_client: QianFanClient::new(AS_VALUE.to_owned())
             });
 
             Ok(())

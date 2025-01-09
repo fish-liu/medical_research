@@ -103,7 +103,7 @@ impl QianFanClient {
         let tem :Vec<&str> = key.split("_").collect();
 
         QianFanClient{
-            auth: IAMAuth::new(tem[0].into(), tem[1].into())
+            auth: IAMAuth::new(tem[1].into(), tem[2].into())
         }
     }
 
