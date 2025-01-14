@@ -1,10 +1,10 @@
 use anyhow::{anyhow, Result};
 use iam_auth::{HttpRequest, IAMAuth};
-use reqwest::{Client, RequestBuilder};
+use tauri_plugin_http::reqwest::{Client, RequestBuilder};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
-mod iam_auth;
 
+mod iam_auth;
 
 #[allow(unused)]
 #[derive(Clone)]
@@ -16,9 +16,11 @@ pub struct QianFanClient{
 #[derive(Clone)]
 pub struct ChatBuilder{
 
-    request:HttpRequest,
+    request: HttpRequest,
 
-    messages: Vec<ChatMessage>
+    messages: Vec<ChatMessage>,
+
+    chat_type: Option<String>
 }
 
 #[allow(unused)]
@@ -99,46 +101,46 @@ impl QianFanClient {
 
     // 关联函数，创建一个 QianFanClient 
     pub fn new(key: String) -> QianFanClient{
-
         let tem :Vec<&str> = key.split("_").collect();
-
         QianFanClient{
             auth: IAMAuth::new(tem[1].into(), tem[2].into())
         }
     }
 
     pub fn chat_completion(self) -> ChatBuilder{
-
         let request = self.auth.sign_request();
         let messages = Vec::new();
 
         return ChatBuilder{
             request,
             messages,
+            chat_type:None
         };
     }
-
 }
 
 impl ChatBuilder {
 
+    #[allow(unused)]
     pub fn add_message(mut self,role:String,content:String) -> Self{
         self.messages.push(ChatMessage { role: role, content: content });
         self
     }
 
     pub fn add_message_list(mut self,messages:Vec<ChatMessage>) -> Self{
-
         for message in messages.iter() {
             self.messages.push(message.clone());
         }
+        self
+    }
 
+    pub fn chat_type(mut self, chat_type:String) -> Self{
+        self.chat_type = Some(chat_type);
         self
     }
 
     // 执行 api 的请求
     pub async fn execute(self) -> Result<ChatResponse> {
-
         let temp :HttpRequest = self.request.clone();
         //println!("----request----:{:?}",self.request);
 
@@ -156,14 +158,13 @@ impl ChatBuilder {
         }
     
         let response = request_builder.json(&data).send().await?;
-
         let status = response.status();
         println!("--------response--status-----{}", status);
 
         let response_str = response.text().await.unwrap();
         println!("--------response-------{:?}", response_str);
 
-        if status == reqwest::StatusCode::OK {
+        if status == tauri_plugin_http::reqwest::StatusCode::OK {
             if response_str.contains("error_code") {
                 return Err(anyhow!("参数异常"));
             }else {
@@ -174,18 +175,42 @@ impl ChatBuilder {
             println!("-----err1-----");
             return Err(anyhow!("请求异常"));
         }
-        //println!("--------response-------{:?}", chat_response);
-        //Ok(chat_response)
     }
     
-
     fn build(self) -> ChatRequest{
+
+        let mut system:Option<String> = None;
+
+        let tem_type = "1";
+
+        if self.chat_type.unwrap().contains(tem_type) {
+            if self.messages.len() == 1 {
+                system = Some("你是一位专业的医生，你的任务是理解患者的感受和需求，以患者为中心进行治疗和沟通。病人刚刚描述了症状，请针对性地询问一个重要问题。".to_string());
+            }else if self.messages.len() < 7 {
+                system = Some("基于病人的回答，请继续询问一个相关的重要问题。".to_string());
+            }else if self.messages.len() == 7{
+                system = Some("现在请基于所有收集到的信息，给出完整的诊断和建议。包括：1.可能的原因 2.建议的检查项目 2.治疗建议 4. 生活建议".to_string());
+            }else {
+                system = Some("请直接回答病人的问题，不要再询问新的问题。".to_string());
+            }
+        }else {
+            if self.messages.len() == 1 {
+                system = Some("你是一位专业的医生，你的任务是执行医疗程序，以任务为中心进行治疗和沟通。病人刚刚描述了症状，请针对性地询问一个重要问题。".to_string());
+            }else if self.messages.len() < 7 {
+                system = Some("基于病人的回答，请继续询问一个相关的重要问题。".to_string());
+            }else if self.messages.len() == 7{
+                system = Some("现在请基于所有收集到的信息，给出完整的诊断和建议。包括：1.可能的原因 2.建议的检查项目 2.治疗建议 4. 生活建议".to_string());
+            }else {
+                system = Some("请直接回答病人的问题，不要再询问新的问题。".to_string());
+            }
+        }
+
         ChatRequest{
             messages:self.messages,
             temperature:None,
             top_p:None,
             penalty_score:None,
-            system:None,
+            system:system,
             user_id:None
         }
     }

@@ -5,7 +5,7 @@
 
     // 文章参考： https://stackblitz.com/edit/vitejs-vite-xv9eqmxq?file=src%2Fmain.js
     import { defaultMessage,chatMessages } from "$lib/store";
-    import type { ChatMessage } from './types/message.type';
+    import type { Message4Chat } from './types/message.type';
 
     let newMessage: string = '';
     let timeline : HTMLElement;
@@ -54,7 +54,7 @@
 
         let sendMessages = [];
         for (let i = 0; i < $chatMessages.length; i++) {
-            let message:ChatMessage = $chatMessages[i];
+            let message:Message4Chat = $chatMessages[i];
             sendMessages[i] = {
                 "role":message.role,
                 "content":message.content
@@ -151,7 +151,7 @@
                     bind:value={ newMessage }
                     on:keydown={ sendKeyHandler }
                placeholder="请输入你的信息!" >
-               <div class="absolute right-0 items-center inset-y-0 hidden sm:flex">
+               <div class="absolute right-0 items-center inset-y-0 sm:flex">
                   
                   <button type="button"  on:click={() => sendMessage() } class="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-400 hover:bg-blue-400 focus:outline-none">
                      <span class="font-bold">发送</span>
