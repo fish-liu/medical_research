@@ -1,0 +1,18 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "base",
+  "description": "Base permissions to run the app",
+  "windows": ["main"],
+  "permissions": [
+    {
+      "identifier": "http:default",
+      "allow": [
+        { "url": "https://*.tauri.app" },
+        { "url": "https://aip.baidubce.com/*" },
+        { "url": "http://jsonplaceholder.typicode.com/*" },
+        {"url": "https://developer.aliyun.com/*"}
+      ],
+      "deny": [{ "url": "https://private.tauri.app" }]
+    }
+  ]
+}
