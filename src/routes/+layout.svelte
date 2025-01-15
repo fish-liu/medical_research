@@ -1,10 +1,19 @@
 <script lang="ts">
     import "../app.css";
-    import Chat from '../lib/Chat.svelte'
+    import { chatType } from "$lib/store";
+    import Chat from '$lib/Chat.svelte'
+    import ChatIndex from '$lib/ChatIndex.svelte';
+
 </script>
 
 <div>
-    <Chat />
+    {#if $chatType == ''  }
+        <ChatIndex/>
+    {/if}
+
+    {#if $chatType != ''}
+        <Chat />
+    {/if}
 </div>
 
 <!-- 

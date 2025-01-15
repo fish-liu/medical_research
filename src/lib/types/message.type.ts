@@ -1,6 +1,6 @@
 
-// 相册定义
-export type ChatMessage = {
+// 聊天内推定义
+export type Message4Chat = {
 
     role: String;        // 角色  "user", "assistant"
 

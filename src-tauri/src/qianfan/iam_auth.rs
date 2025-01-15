@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use reqwest::Url;
+use tauri_plugin_http::reqwest::Url;
 use crate::utils::{get_utc_time, sha_256_mac};
 
 
