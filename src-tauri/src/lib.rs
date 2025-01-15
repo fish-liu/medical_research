@@ -2,7 +2,7 @@
 
 use qianfan::QianFanClient;
 use std::sync::Arc;
-use tauri::Manager;
+use tauri::{tray::TrayIconBuilder, Manager};
 use tauri_plugin_store::{Store, StoreExt};
 
 mod qianfan;
@@ -41,6 +41,12 @@ pub fn run() {
 
             let store = app.store("app_data.json").unwrap();
             app.manage(Storage{store});
+
+            let _ = TrayIconBuilder::with_id("main")
+            .icon(app.default_window_icon().unwrap().clone())
+            .title("MedConsult")
+            .tooltip("MedConsult")
+            .build(app);
 
             Ok(())
         })

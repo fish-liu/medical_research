@@ -21,7 +21,7 @@
         <p style="display: block;text-align: center;width: 100%; margin-bottom: 0; font-size: smaller;" >
           Time {message.createTime}
         </p>  
-        <div class="px-4 py-2 rounded-md inline-bloc mx-1 {suport? 'bg-emerald-200 text-black' : 'bg-gray-300 text-gray-600'}">
+        <div class="px-4 py-2 rounded-md inline-bloc mx-1 {suport? 'bg-blue-500 text-white' : 'bg-gray-50 text-black'}">
             <span style="white-space: pre-wrap;">
                 {@html parseMdstrong(message.content)}
             </span>

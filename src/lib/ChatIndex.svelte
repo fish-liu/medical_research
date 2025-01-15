@@ -3,17 +3,18 @@
     import { chatType,defaultMessage } from "$lib/store";
     import dayjs from 'dayjs';
 
+    // 0 低共情； 1 高共情
     let radios = [
         {
-            name: "高共情",
-            chatType:"1",
-            description: "以患者为中心进行治疗和沟通.",
-        },
-        {
-            name: "低共情",
+            name: "0",
             chatType:"0",
             description: "以任务为中心进行治疗和沟通.",
         },
+        {
+            name: "1",
+            chatType:"1",
+            description: "以患者为中心进行治疗和沟通.",
+        }
     ];
 
     let checkedValue:string ;
@@ -21,7 +22,7 @@
         checkedValue = value;
 
         await invoke("set_chat_type",{'chatType':value}).then((res)=>{
-            console.log("----set_chat_type  res----",res)
+            //console.log("----set_chat_type  res----",res)
 
             $chatType = value;
             localStorage.setItem('chat_type',value);
@@ -52,7 +53,7 @@
     </div>
 
     <div class="flex-1 max-w-2xl mx-auto px-4 py-8"  >
-        <h2 class="text-gray-800 font-medium">请选择您的医疗类型</h2>
+        <h2 class="text-gray-800 font-medium">请按要求选择您的编码</h2>
         <ul class="mt-6 space-y-3">
             {#each radios as item, idx}
                 <li>
@@ -67,9 +68,11 @@
                                 <h3 class="leading-none text-gray-800 font-medium">
                                     {item.name}
                                 </h3>
+                                <!-- 
                                 <p class="mt-1 text-sm text-gray-600">
                                     {item.description}
                                 </p>
+                                -->
                             </div>
                         </div>
                         <span class="block absolute top-5 left-5 border peer-checked:border-[5px] peer-checked:border-indigo-600 w-4 h-4 rounded-full"></span>

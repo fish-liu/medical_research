@@ -10,11 +10,11 @@ import dayjs from 'dayjs';
 export async function load() {
 
     let local_chat_type = localStorage.getItem('chat_type');
-    console.log("---localStorage chat_type----",local_chat_type);
+    // console.log("---localStorage chat_type----",local_chat_type);
     if(local_chat_type == null ){
         let chat_type:string = await invoke("get_chat_type");
 
-        console.log("---admin chat_type----",chat_type);
+        // console.log("---admin chat_type----",chat_type);
         if(chat_type != ""){
             chatType.set(chat_type);
             localStorage.setItem("chat_type",chat_type);
@@ -45,5 +45,6 @@ export async function load() {
             createTime:dayjs().format('HH:mm:ss')
         })
     }
+
 }
 
