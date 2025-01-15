@@ -31,7 +31,7 @@
             if(value =='1'){
                 content = "你好 ~我是MedConsult，你的AI医疗助手。问诊过程中，除了详细的病症描述，也可以告诉我你的情绪，我会尽我所能理解你的~"
             }else {
-                content = "你好\~我是MedConsult，你的AI医疗助手。问诊过程中，请详细地告诉我你的症状，我会给予你相应的医疗建议，感谢配合~"
+                content = "你好 ~我是MedConsult，你的AI医疗助手。问诊过程中，请详细地告诉我你的症状，我会给予你相应的医疗建议，感谢配合~"
             }
 
             $defaultMessage = {
