@@ -178,30 +178,31 @@ impl ChatBuilder {
     }
     
     fn build(self) -> ChatRequest{
-
-        let mut system:Option<String> = None;
+        
+        #[warn(unused_assignments)]
+        let mut tem_system:Option<String> = None;
 
         let tem_type = "1";
 
         if self.chat_type.unwrap().contains(tem_type) {
             if self.messages.len() == 1 {
-                system = Some("你是一位专业的医生，你的任务是理解患者的感受和需求，以患者为中心进行治疗和沟通。病人刚刚描述了症状，请针对性地询问一个重要问题。".to_string());
+                tem_system = Some("你是一位专业的医生，你的任务是理解患者的感受和需求，以患者为中心进行治疗和沟通。病人刚刚描述了症状，请针对性地询问一个重要问题。".to_string());
             }else if self.messages.len() < 7 {
-                system = Some("基于病人的回答，请继续询问一个相关的重要问题。".to_string());
+                tem_system = Some("基于病人的回答，请继续询问一个相关的重要问题。".to_string());
             }else if self.messages.len() == 7{
-                system = Some("现在请基于所有收集到的信息，给出完整的诊断和建议。包括：1.可能的原因 2.建议的检查项目 2.治疗建议 4. 生活建议".to_string());
+                tem_system = Some("现在请基于所有收集到的信息，给出完整的诊断和建议。包括：1.可能的原因 2.建议的检查项目 2.治疗建议 4. 生活建议".to_string());
             }else {
-                system = Some("请直接回答病人的问题，不要再询问新的问题。".to_string());
+                tem_system = Some("请直接回答病人的问题，不要再询问新的问题。".to_string());
             }
         }else {
             if self.messages.len() == 1 {
-                system = Some("你是一位专业的医生，你的任务是执行医疗程序，以任务为中心进行治疗和沟通。病人刚刚描述了症状，请针对性地询问一个重要问题。".to_string());
+                tem_system = Some("你是一位专业的医生，你的任务是执行医疗程序，以任务为中心进行治疗和沟通。病人刚刚描述了症状，请针对性地询问一个重要问题。".to_string());
             }else if self.messages.len() < 7 {
-                system = Some("基于病人的回答，请继续询问一个相关的重要问题。".to_string());
+                tem_system = Some("基于病人的回答，请继续询问一个相关的重要问题。".to_string());
             }else if self.messages.len() == 7{
-                system = Some("现在请基于所有收集到的信息，给出完整的诊断和建议。包括：1.可能的原因 2.建议的检查项目 2.治疗建议 4. 生活建议".to_string());
+                tem_system = Some("现在请基于所有收集到的信息，给出完整的诊断和建议。包括：1.可能的原因 2.建议的检查项目 2.治疗建议 4. 生活建议".to_string());
             }else {
-                system = Some("请直接回答病人的问题，不要再询问新的问题。".to_string());
+                tem_system = Some("请直接回答病人的问题，不要再询问新的问题。".to_string());
             }
         }
 
@@ -210,7 +211,7 @@ impl ChatBuilder {
             temperature:None,
             top_p:None,
             penalty_score:None,
-            system:system,
+            system:tem_system,
             user_id:None
         }
     }
