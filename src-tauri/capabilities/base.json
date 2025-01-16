@@ -13,6 +13,7 @@
         {"url": "https://developer.aliyun.com/*"}
       ],
       "deny": [{ "url": "https://private.tauri.app" }]
-    }
+    },
+    "log:default"
   ]
 }
