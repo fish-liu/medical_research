@@ -4,7 +4,6 @@ use qianfan::QianFanClient;
 use std::sync::Arc;
 use tauri::Manager;
 use tauri_plugin_store::{Store, StoreExt};
-use tauri_plugin_log::{Target,TargetKind};
 
 mod cmd;
 mod qianfan;
@@ -25,10 +24,6 @@ struct Storage<R: tauri::Runtime> {
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
-        .plugin(tauri_plugin_log::Builder::default().targets([
-            Target::new(TargetKind::Stdout),
-            Target::new(TargetKind::Webview)
-        ]).build())
         .plugin(tauri_plugin_shell::init())
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_http::init())

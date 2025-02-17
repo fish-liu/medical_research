@@ -187,14 +187,14 @@
                 <input type="text" class="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3"
                     bind:value={ newMessage }
                     on:keydown={ sendKeyHandler }
-                    placeholder="请输入你的信息!" >
+                    placeholder="请输入您的信息!" >
                 -->
                 <!-- 
                 <input type="text" class="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-2 bg-gray-200 rounded-md py-3 multiline-input" 
                     bind:value={ newMessage }
                     on:keydown={ sendKeyHandler }
                     on:focus={ focusHandle }
-                    placeholder="请输入你的信息!" >
+                    placeholder="请输入您的信息!" >
                 
                 <textarea
                     class="w-full text-slate-600 bg-slate-100 border border-transparent hover:border-slate-200 appearance-none rounded px-3.5 py-2.5 outline-none focus:bg-white focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
@@ -238,7 +238,7 @@
 }
 
 .input-box[contenteditable]:empty::before {
-  content: "请输入你的信息!";
+  content: "请输入您的信息!";
   color: gray;
 }
 

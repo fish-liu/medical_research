@@ -9,6 +9,8 @@ import { chatType,defaultMessage } from "$lib/store";
 import dayjs from 'dayjs';
 export async function load() {
     console.log("layout  load");
+
+    
     let local_chat_type = localStorage.getItem('chat_type');
     // console.log("---localStorage chat_type----",local_chat_type);
     if(local_chat_type == null ){
