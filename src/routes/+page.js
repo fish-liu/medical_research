@@ -8,12 +8,11 @@ export function load() {
     // 官方文档： https://kit.svelte.js.cn/docs/routing
 
     console.log("----redirect-----");
-
-    
+    /*
     defaultMessage.set({
         role:"assistant",
         content:"欢迎咨询智能AI",
         createTime: dayjs().format('HH:mm:ss')
     });
-    
+    */
 }

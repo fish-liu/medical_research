@@ -1,9 +1,12 @@
 import { writable } from 'svelte/store';
 
-import type { ChatMessage } from './types/message.type';
+import type { Message4Chat } from './types/message.type';
 
 // https://sveltebyexample.com/writable-stores/
 
-export const chatMessages = writable<Array<ChatMessage>>([]);
+// 聊天类型，1= 共情， 0= 低共情
+export const chatType = writable<string>('')
 
-export const defaultMessage = writable<ChatMessage>();
+export const chatMessages = writable<Array<Message4Chat>>([]);
+
+export const defaultMessage = writable<Message4Chat>();
